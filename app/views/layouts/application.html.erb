@@ -3,12 +3,40 @@
   <head>
     <title>IdeaManager</title>
     <%= csrf_meta_tags %>
-
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <%= javascript_include_tag 'application' %>
+    <%= javascript_include_tag "https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js" %>
+    <%= stylesheet_link_tag "https://fonts.googleapis.com/icon?family=Material+Icons"%>
+    <%= stylesheet_link_tag 'application', media: 'all' %>
   </head>
-
+  
   <body>
-    <%= yield %>
+    <nav class="navbar navbar-default">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#Navbar">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span> 
+          </button>
+          <a class="navbar-brand" href="#">Idea-Manager</a>
+        </div>
+        <div class="collapse navbar-collapse" id="Navbar">
+          <ul class="nav navbar-nav">
+            <li><%= link_to "Dashboard", root_path, class: "nav-item" %></li>
+            <li><%= link_to "Projects", projects_path, class: "nav-item" %></li>
+            <li><%= link_to "People", root_path, class: "nav-item" %></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><%= link_to new_person_registration_path do %><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;Sign Up<% end %></li>
+            <li><a href="#"><span class="glyphicon glyphicon-log-in"></span>&nbsp;&nbsp;&nbsp;Login</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="container">
+      <%= yield %>
+    </div>
   </body>
 </html>

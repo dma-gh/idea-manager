@@ -1,0 +1,15 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "materialize";
+
+.collapsing {
+  background-color: white;
+  border: 1px solid transparent;
+  z-index: 9999999;
+}
+
+.collapse.in {
+  background-color: white;
+  border: 1px solid transparent;
+  z-index: 9999999;
+}

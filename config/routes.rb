@@ -1,3 +1,10 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  
+  resources :projects do
+  end
+
+  devise_for :people, :controllers => { :registrations => "registrations" }
+  
+  root 'dashboard#index'
+  get '/dashboard' => 'dashboard#index'
 end
