@@ -29,8 +29,12 @@
             <li><%= link_to "People", root_path, class: "nav-item" %></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li><%= link_to new_person_registration_path do %><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;Sign Up<% end %></li>
-            <li><a href="#"><span class="glyphicon glyphicon-log-in"></span>&nbsp;&nbsp;&nbsp;Login</a></li>
+            <% if current_person.blank? %>
+              <li><%= link_to new_person_registration_path do %><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;Sign Up<% end %></li>
+              <li><%= link_to new_person_session_path do %><span class="glyphicon glyphicon-log-in"></span>&nbsp;&nbsp;&nbsp;Login<% end %></li>
+            <% else %>
+            <li><a>Welcome <%= current_person.first_name %></a></li>
+            <% end %>
           </ul>
         </div>
       </div>

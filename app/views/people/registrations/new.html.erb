@@ -1,21 +1,21 @@
-<h2>Sign up</h2>
+<h3>Sign up</h3>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 
   <div class="field">
     <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
+    <%= f.email_field :email, placeholder: "Enter your Email Address", autofocus: true %>
   </div>
 
   <div class="field">
     <%= f.label :first_name %><br />
-    <%= f.email_field :text, autofocus: true %>
+    <%= f.text_field :first_name, placeholder: "Enter your First Name", autofocus: true %>
   </div>
 
   <div class="field">
     <%= f.label :last_name %><br />
-    <%= f.email_field :text, autofocus: true %>
+    <%= f.text_field :last_name, placeholder: "Enter your Last Name", autofocus: true %>
   </div>
 
   <div class="field">
@@ -23,17 +23,18 @@
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
     <% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
+    <%= f.password_field :password, placeholder: "Enter your Password", autocomplete: "off" %>
   </div>
 
   <div class="field">
     <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+    <%= f.password_field :password_confirmation, placeholder: "Confirm Your Password", autocomplete: "off" %>
   </div>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
+  <div class="actions btn-group">
+    <%= f.submit "Sign up", class: "btn" %>
+  </div>
+  <div class="btn-group">
+    <%= button_to "Log in", new_person_session_path, class: "btn" %>  
   </div>
 <% end %>
-
-<%= render "people/shared/links" %>
