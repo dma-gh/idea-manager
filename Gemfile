@@ -26,6 +26,8 @@ gem 'bootstrap-sass'
 gem 'materialize-sass'
 #Bourbon SCSS library
 gem 'bourbon'
+#Modernizr JS library
+gem 'modernizr-rails'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
