@@ -7,7 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= javascript_include_tag 'application' %>
     <%= javascript_include_tag "https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js" %>
-    <%= stylesheet_link_tag "https://fonts.googleapis.com/icon?family=Material+Icons"%>
+    <%= stylesheet_link_tag "https://fonts.googleapis.com/icon?family=Material+Icons" %>
+    <%= stylesheet_link_tag "https://fonts.googleapis.com/css?family=Droid+Serif|Open+Sans" %>
     <%= stylesheet_link_tag 'application', media: 'all' %>
   </head>
   
@@ -26,7 +27,7 @@
           <ul class="nav navbar-nav">
             <li><%= link_to "Dashboard", root_path, class: "nav-item" %></li>
             <li><%= link_to "Projects", projects_path, class: "nav-item" %></li>
-            <li><%= link_to "People", root_path, class: "nav-item" %></li>
+            <li><%= link_to "People", dashboard_people_path, class: "nav-item" %></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <% if current_person.blank? %>

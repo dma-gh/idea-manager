@@ -4,6 +4,7 @@ class ProjectsController < ApplicationController
   end
   
   def new
+    @people = Person.all
   end
   
   def create
@@ -20,6 +21,7 @@ class ProjectsController < ApplicationController
   end
     
   def edit
+    @people = Person.all
   end
   
   def destroy

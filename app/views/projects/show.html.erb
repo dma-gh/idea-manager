@@ -1,6 +1,20 @@
-<%= @project.title %>
-<br>
-Timeline Here
+<%= stylesheet_link_tag 'projects' %>
+
+
+<h1><%= @project.title %></h1>
+
+<section id="cd-timeline" class="cd-container">
+  <div class="cd-timeline-block">
+    <div class="cd-timeline-img cd-picture">
+    </div>
+
+    <div class="cd-timeline-content">
+      <h2>Event Title</h2>
+      <p>Event Text</p>
+      <span class="cd-date">&nbsp;Date</span>
+    </div>
+  </div>
+</section>
 
 <div class="fixed-action-btn horizontal click-to-toggle">
   <a class="btn-floating btn-large red">
@@ -16,5 +30,4 @@ Timeline Here
     <li><a class="btn-floating green"><i class="material-icons">publish</i></a></li>
     <li><a class="btn-floating blue"><i class="material-icons">attach_file</i></a></li>
   </ul>
-</div>
 </div>

@@ -24,6 +24,8 @@ gem 'devise'
 gem 'bootstrap-sass'
 #Materialize For Rails
 gem 'materialize-sass'
+#Bourbon SCSS library
+gem 'bourbon'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 

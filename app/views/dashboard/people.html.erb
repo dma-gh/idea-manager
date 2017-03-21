@@ -1,0 +1,21 @@
+<h3>People</h3>
+
+<%= form_for :project, url: projects_path do |f| %>
+  <div class="row-fluid projects">
+    <% @people.each do |person| %>
+        <div class="col col-sm-12 col-md-6 col-lg-4">
+          <div class="card project">
+            <div class="card-content black-text">
+              <span class="card-title"><%= person.first_name %><%= person.last_name %></span>
+            </div>
+          </div>
+        </div>
+    <% end %>
+  </div>
+<% end %>
+
+<div class="fixed-action-btn horizontal">
+  <%= link_to new_project_path, class: "btn-floating btn-large red" do %>
+    <i class="material-icons">add</i>
+  <% end %>
+</div>

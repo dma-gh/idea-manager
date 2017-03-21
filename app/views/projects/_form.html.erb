@@ -8,6 +8,17 @@
     <%= f.text_area :description, class: "form-control" %>
   </div>
 
+  <div class="form-group input-field">
+    <label>Choose People</label>
+    <br><br>
+    <%= f.select :people, multiple: true, class: "form-control" do %>
+      <%= content_tag :option, "Hello" %>
+      <%= content_tag :option, "Hello" %>
+      <%= content_tag :option, "Hello" %>
+      <%= content_tag :option, "Hello" %>
+    <% end %>
+  </div>
+
   <div class="form-group">
     <%= f.submit 'Save Project', class: "btn btn-lg waves-effect waves-light" %>
   </div>
