@@ -1,5 +1,6 @@
 $(document).ready(function() {
   $('select').material_select();
+	$('.people').data('multiple', true);
 });
 
 jQuery(document).ready(function($){

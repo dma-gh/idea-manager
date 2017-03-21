@@ -1,22 +1,20 @@
 <%= form_for :project, url: projects_path, :html => { class: "col-lg-10 col-lg-offset-1 col-md-12 col-sm-12 col-xs-12 " } do |f| %>
-  <div class="form-group" >
+  <div class="form-group input-field" >
     <%= f.label :title %>
-    <%= f.text_field :title, placeholder: "Project Title", class: "form-control" %>
+    <%= f.text_field :title, placeholder: "Project Title", class: "form-control validate" %>
   </div>
-  <div class="form-group">
+  <div class="form-group input-field">
     <%= f.label :description %>
-    <%= f.text_area :description, class: "form-control" %>
+    <%= f.text_area :description, placeholder: "Project Description", class: "form-control materialize-textarea" %>
   </div>
 
-  <div class="form-group input-field">
-    <label>Choose People</label>
-    <br><br>
-    <%= f.select :people, multiple: true, class: "form-control" do %>
-      <%= content_tag :option, "Hello" %>
-      <%= content_tag :option, "Hello" %>
-      <%= content_tag :option, "Hello" %>
-      <%= content_tag :option, "Hello" %>
-    <% end %>
+  <div class="form-group input-field">    
+    <select multiple="multiple" name="project[people][]">
+      <option value="" disabled selected>Choose People to Include</option>
+      <% @people.each do |person| %>
+        <%= content_tag :option, "#{person.first_name} #{person.last_name}", id: person.id, value: "#{person.id}" %>
+      <% end %>
+    </select>
   </div>
 
   <div class="form-group">

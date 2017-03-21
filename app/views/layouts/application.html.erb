@@ -35,6 +35,7 @@
               <li><%= link_to new_person_session_path do %><span class="glyphicon glyphicon-log-in"></span>&nbsp;&nbsp;&nbsp;Login<% end %></li>
             <% else %>
             <li><a>Welcome <%= current_person.first_name %></a></li>
+            <li><%= link_to "Log Out", destroy_session_path(current_person), method: :delete %></li>
             <% end %>
           </ul>
         </div>
