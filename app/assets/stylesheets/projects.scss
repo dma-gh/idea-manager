@@ -17,6 +17,20 @@ html * {
 	-moz-osx-font-smoothing: grayscale;
 }
 
+.bootbox {
+		font-family: "Open Sans", sans-serif;
+    width: auto !important;
+    margin-left: auto !important;
+    background-color: transparent !important;
+    border: none !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    position: fixed !important;
+		left: 0 !important;
+    overflow: visible !important;
+    transition: opacity 0.15s linear 0s !important;
+}
+
 *, *:after, *:before {
 	@include box-sizing(border-box);
 }
@@ -391,9 +405,9 @@ html * {
 
 body {
   font-size: 100%;
-  font-family: "Droid Serif", serif;
-  color: #7f8c97;
-  background-color: #e9f0f5;
+  font-family: "Open Sans", sans-serif;
+  color: $main-text;
+  background-color: $background;
 }
 
 a {
@@ -622,7 +636,7 @@ header h1 {
   background: white;
   border-radius: 0.25em;
   padding: 1em;
-  box-shadow: 0 3px 0 #d7e4ed;
+  box-shadow: 0px 3px 8px #d7e4ed;
 }
 .cd-timeline-content:after {
   content: "";
@@ -633,8 +647,9 @@ header h1 {
   color: #303e49;
 }
 .cd-timeline-content p, .cd-timeline-content .cd-read-more, .cd-timeline-content .cd-date {
-  font-size: 13px;
+  font-size: 16px;
   font-size: 0.8125rem;
+	text-decoration: bold;
 }
 .cd-timeline-content .cd-read-more, .cd-timeline-content .cd-date {
   display: inline-block;
@@ -705,6 +720,7 @@ header h1 {
     font-size: 16px;
     font-size: 1rem;
   }
+	
   .cd-timeline-block:nth-child(even) .cd-timeline-content {
     float: right;
   }

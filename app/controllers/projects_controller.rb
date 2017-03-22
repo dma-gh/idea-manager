@@ -1,6 +1,11 @@
 class ProjectsController < ApplicationController
+  
   def index
-    @projects = Project.all
+    if current_person.manager?
+      @projects = Project.all
+    else
+      @projects = current_person.projects
+    end
   end
   
   def new
@@ -20,6 +25,7 @@ class ProjectsController < ApplicationController
       end
 
       if @project.save!
+        @project.events = []
         redirect_to @project
       else
         render :new
@@ -28,6 +34,7 @@ class ProjectsController < ApplicationController
   
   def show
     @project = Project.find(params[:id])
+    @event = Event.new(updated_at: Date.today)
   end
     
   def edit

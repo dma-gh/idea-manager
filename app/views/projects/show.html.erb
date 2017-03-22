@@ -1,33 +1,55 @@
 <%= stylesheet_link_tag 'projects' %>
 
 
-<h1><%= @project.title %></h1>
+<h5><%= @project.title %></h5>
+<p>
+  |
+  <% @project.people.each do |person| %>
+    <%= person.first_name %>&nbsp;<%= person.last_name %> |
+  <% end %>
+</p>
 
 <section id="cd-timeline" class="cd-container">
-  <div class="cd-timeline-block">
-    <div class="cd-timeline-img cd-picture">
-    </div>
 
-    <div class="cd-timeline-content">
-      <h2>Event Title</h2>
-      <p>Event Text</p>
-      <span class="cd-date">&nbsp;Date</span>
+    <% @project.events.order("updated_at ASC").each do |event| %>
+      <div class="cd-timeline-block">
+        <div class="cd-timeline-img cd-movie">
+        </div>
+        <div class="cd-timeline-content">
+          <h5><%= event.title %></h5>
+          <blockquote><%= event.description %></blockquote>
+          <%= link_to "Edit Event", edit_project_event_path(:id => event.id, :project_id => @project.id) %>
+          <span class="cd-date"><b>&nbsp;<%= event.updated_at.strftime("%B %d, %Y") %> by <%= "#{event.person.first_name} #{event.person.last_name}" if event.person.present? %></b></span>
+        </div>
+    <% end %>
     </div>
-  </div>
 </section>
 
+<div id="eventForm" class="modal fade bootbox" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <%= render partial: 'events/form' %>
+      </div>
+    </div>
+
+  </div>
+</div>
+  
 <div class="fixed-action-btn horizontal click-to-toggle">
   <a class="btn-floating btn-large red">
     <i class="material-icons">menu</i>
   </a>
   <ul>
     <li>
-      <%= link_to projects_path, class: "btn-floating red" do %>
-        <i class="material-icons">keyboard_arrow_left</i>
+      <%= link_to '#', :data => { 'toggle':'modal', 'target':'#eventForm' }, class: "btn-floating blue" do %>
+       <i class="material-icons">add</i>
       <% end %>
     </li>
-    <li><a class="btn-floating yellow darken-1"><i class="material-icons">add</i></a></li>
-    <li><a class="btn-floating green"><i class="material-icons">publish</i></a></li>
-    <li><a class="btn-floating blue"><i class="material-icons">attach_file</i></a></li>
   </ul>
 </div>

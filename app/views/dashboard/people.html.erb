@@ -1,18 +1,22 @@
 <h3>People</h3>
 
-<%= form_for :project, url: projects_path do |f| %>
-  <div class="row-fluid projects">
-    <% @people.each do |person| %>
-        <div class="col col-sm-12 col-md-6 col-lg-4">
-          <div class="card project">
-            <div class="card-content black-text">
-              <span class="card-title"><%= person.first_name %>&nbsp;<%= person.last_name %></span>
-            </div>
+<div class="row-fluid projects">
+  <% @people.each do |person| %>
+      <div class="col col-sm-12 col-md-6 col-lg-4">
+        <div class="card project">
+          <div class="card-content black-text">
+            <span class="card-title"><%= person.first_name %>&nbsp;<%= person.last_name %></span>
           </div>
+          <% if current_person.manager? %>
+            <div class="card-action">
+              <%= link_to("Make Manager", make_manager_path(:manager_id => person.id)) if !person.manager %>
+              <%= link_to("Demote Manager", demote_manager_path(:manager_id => person.id)) if person.manager and person.id != current_person.id %>
+            </div>
+          <% end %>
         </div>
-    <% end %>
-  </div>
-<% end %>
+      </div>
+  <% end %>
+</div>
 
 <div class="fixed-action-btn horizontal">
   <%= link_to new_project_path, class: "btn-floating btn-large red" do %>
