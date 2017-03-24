@@ -1,0 +1,9 @@
+<%= form_for [@project, @event, @comment], :action => :new do |f| %>
+  <div class="input-field">
+    <%= f.label :content, "Comment" %>
+    <%= f.text_field :content, placeholder: "Type a Message" %>
+  </div>
+  <div class="input-field">
+    <%= f.submit "Post Comment", class: "btn btn-wave" %>
+  </div>
+<% end %>

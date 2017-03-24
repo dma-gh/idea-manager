@@ -10,15 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170321223648) do
+ActiveRecord::Schema.define(version: 20170323130950) do
+
+  create_table "comments", force: :cascade do |t|
+    t.text     "content"
+    t.integer  "event_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "person_id"
+    t.index ["event_id"], name: "index_comments_on_event_id"
+    t.index ["person_id"], name: "index_comments_on_person_id"
+  end
 
   create_table "events", force: :cascade do |t|
     t.string   "title"
     t.string   "description"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",                                  null: false
+    t.datetime "updated_at",                                  null: false
     t.integer  "project_id"
     t.integer  "person_id"
+    t.boolean  "complete",    default: false
+    t.datetime "deadline",    default: '2017-03-23 00:00:00'
     t.index ["person_id"], name: "index_events_on_person_id"
     t.index ["project_id"], name: "index_events_on_project_id"
   end

@@ -28,6 +28,7 @@ html * {
     position: fixed !important;
 		left: 0 !important;
     overflow: visible !important;
+		overflow-y: scroll !important;
     transition: opacity 0.15s linear 0s !important;
 }
 
@@ -173,16 +174,20 @@ header {
 		margin-top: -12px;
 	}
 
-	&.cd-picture {
+	&.cd-green {
 		background: $color-4;
 	}
 
-	&.cd-movie {
+	&.cd-red {
 		background: $color-2;
 	}
 
-	&.cd-location {
+	&.cd-yellow {
 		background: $color-5;
+	}
+	
+	.link-color {
+		color: $link;
 	}
 
 	@include MQ(L) {
@@ -636,7 +641,7 @@ header h1 {
   background: white;
   border-radius: 0.25em;
   padding: 1em;
-  box-shadow: 0px 3px 8px #d7e4ed;
+  box-shadow: -3px 2px 5px #888888;
 }
 .cd-timeline-content:after {
   content: "";

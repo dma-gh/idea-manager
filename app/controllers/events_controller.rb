@@ -12,7 +12,6 @@ class EventsController < ApplicationController
   def create
     @project = Project.find(params[:project_id])
     @event = @project.events.new(event_params)
-    @event.updated_at = event_params[:updated_at]
     @event.person = current_person
     
     if @event.save!
@@ -33,8 +32,17 @@ class EventsController < ApplicationController
     end
   end
   
+  def toggle_complete
+    @project = Project.find(params[:project_id])
+    @event = Event.find(params[:event_id])
+    @event.complete = !@event.complete
+    @event.save
+    
+    redirect_to @project
+  end
+  
   private
   def event_params
-    params.require(:event).permit(:title, :description, :updated_at, :project_id)
+    params.require(:event).permit(:title, :description, :deadline, :project_id)
   end
 end

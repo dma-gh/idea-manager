@@ -8,7 +8,10 @@ Rails.application.routes.draw do
     get 'demote_manager' => 'dashboard#demote_manager', as: 'demote_manager'
     
     resources :projects do
-      resources :events
+      resources :events do
+        get 'toggle_complete' => "events#toggle_complete", as: 'toggle_complete'
+        resources :comments
+      end
     end
   end
 
