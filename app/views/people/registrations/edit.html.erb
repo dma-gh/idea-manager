@@ -18,6 +18,16 @@
     <%= f.text_field :last_name, autofocus: true %>
   </div>
 
+  <div class="field">
+    <%= f.label :phone %><br />
+    <%= f.telephone_field :phone, placeholder: "Enter your Phone Number", autofocus: true %> 
+  </div>
+
+  <div class="field">
+    <%= f.label :carrier %>
+    <%= carrier_select('person[carrier]', "Choose your Carrier") %>
+  </div>
+
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>

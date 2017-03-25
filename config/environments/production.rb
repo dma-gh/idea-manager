@@ -24,6 +24,16 @@ Rails.application.configure do
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
   config.assets.compile = false
+  
+    config.action_mailer.smtp_settings = {
+    address:              'mail.ultraimage.us',
+    port:                 587,
+    domain:               'ultraimage.us:80',
+    user_name:            'noreply@ultraimage.us',
+    password:             'noreply1',
+    authentication:       'plain',
+    enable_starttls_auto: true  
+  }
 
   # `config.assets.precompile` and `config.assets.version` have moved to config/initializers/assets.rb
 

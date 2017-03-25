@@ -28,6 +28,10 @@ gem 'materialize-sass'
 gem 'bourbon'
 #Modernizr JS library
 gem 'modernizr-rails'
+#Send SMS Texts For Alerts
+gem 'sms-easy'
+#Schedule Cron Jobs for Sending Texts
+gem 'whenever'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 

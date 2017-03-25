@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170323130950) do
+ActiveRecord::Schema.define(version: 20170325203126) do
 
   create_table "comments", force: :cascade do |t|
     t.text     "content"
@@ -51,6 +51,8 @@ ActiveRecord::Schema.define(version: 20170323130950) do
     t.boolean  "manager"
     t.string   "first_name"
     t.string   "last_name"
+    t.string   "phone"
+    t.string   "carrier"
     t.index ["email"], name: "index_people_on_email", unique: true
     t.index ["reset_password_token"], name: "index_people_on_reset_password_token", unique: true
   end
