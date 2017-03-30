@@ -34,7 +34,8 @@ class ProjectsController < ApplicationController
   
   def show
     @project = Project.find(params[:id])
-    @event = Event.new(updated_at: Date.today)
+    @events = @project.events.all.order "deadline ASC"
+    @event = Event.new(deadline: Date.today)
   end
     
   def edit

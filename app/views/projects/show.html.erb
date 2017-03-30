@@ -11,7 +11,7 @@
 
 <section id="cd-timeline" class="cd-container">
 
-    <% @project.events.order("updated_at ASC").each do |event| %>
+    <% @events.each do |event| %>
       <div class="cd-timeline-block">
         <div class="cd-timeline-img <%= event.complete? ? "cd-green" : "cd-red" %>">
         </div>
