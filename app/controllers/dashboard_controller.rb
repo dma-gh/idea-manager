@@ -1,5 +1,6 @@
 class DashboardController < ApplicationController
   def index
+    @events = current_person.events.where(deadline: Date.today .. Date.today + 10.years).order("deadline ASC")
   end
   
   def people

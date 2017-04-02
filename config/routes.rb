@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   
   authenticated :person do
-    root 'projects#index'
+    root to: redirect('/dashboard')
     get '/dashboard' => 'dashboard#index'
     get '/people' => 'dashboard#people', as: 'dashboard_people'
     get 'make_manager' => 'dashboard#make_manager', as: 'make_manager'

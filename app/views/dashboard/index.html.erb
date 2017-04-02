@@ -1,2 +1,23 @@
-<h3>Dashboard Index</h3>
+<%= stylesheet_link_tag 'projects' %>
 
+<h3><center>Upcoming Events</center></h3>
+<br>
+
+<section id="cd-timeline" class="cd-container">
+
+    <% @events.each do |event| %>
+      <div class="cd-timeline-block">
+        <div class="cd-timeline-img <%= event.complete? ? "cd-green" : "cd-red" %>">
+        </div>
+        <div class="cd-timeline-content">
+          <h7><%= event.project.title %></h7>
+          <h5><%= event.title %></h5>
+          <blockquote><%= event.description %></blockquote>
+          <%= link_to "View Project", project_path(event.project) %>
+          <span class="cd-date"><b>&nbsp;<%= event.deadline.strftime("%B %d, %Y") unless event.deadline.nil? %> by <%= "#{event.person.first_name} #{event.person.last_name}" if event.person.present? %></b></span>
+        </div>
+    <% end %>
+    </div>
+</section>
+
+<br>
