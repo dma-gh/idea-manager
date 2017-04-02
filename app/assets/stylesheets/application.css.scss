@@ -21,3 +21,17 @@ body {
 .caret {
   border-color: transparent !important;
 }
+
+.navbar-toggle {
+  border: 0px solid transparent !important;
+}
+
+header, main, footer {
+  padding-left: 150px;
+}
+
+@media only screen and (max-width : 992px) {
+  header, main, footer {
+    padding-left: 0;
+  }
+}
