@@ -17,7 +17,7 @@
 <div class="comments">
   <% @event.comments.each do |comment| %>
     <div class="comment">
-      <h6><%= "#{comment.person.first_name} #{comment.person.last_name}" if comment.person.present? %></h6>
+      <h6><%= "#{comment.person.first_name} #{comment.person.last_name}" if comment.person.present? %> on <%= comment.created_at.localtime.strftime("%B %d, %Y") %></h6>
       <blockquote><%= comment.content %></blockquote>
     </div>
   <% end %>

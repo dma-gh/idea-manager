@@ -32,6 +32,14 @@ html * {
     transition: opacity 0.15s linear 0s !important;
 }
 
+blockquote.block-green {
+	border-left-color: $color-4;
+}
+
+blockquote.block-red {
+	border-left-color: $color-2;
+}
+
 *, *:after, *:before {
 	@include box-sizing(border-box);
 }

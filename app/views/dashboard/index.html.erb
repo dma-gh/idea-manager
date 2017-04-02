@@ -12,7 +12,7 @@
         <div class="cd-timeline-content">
           <h7><%= event.project.title %></h7>
           <h5><%= event.title %></h5>
-          <blockquote><%= event.description %></blockquote>
+          <blockquote class="<%= event.complete? ? "block-green" : "block-red" %>" ><%= event.description %></blockquote>
           <%= link_to "View Project", project_path(event.project) %>
           <span class="cd-date"><b>&nbsp;<%= event.deadline.strftime("%B %d, %Y") unless event.deadline.nil? %> by <%= "#{event.person.first_name} #{event.person.last_name}" if event.person.present? %></b></span>
         </div>

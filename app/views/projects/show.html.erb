@@ -17,7 +17,7 @@
         </div>
         <div class="cd-timeline-content">
           <h5><%= event.title %></h5>
-          <blockquote><%= event.description %></blockquote>
+          <blockquote class="<%= event.complete? ? "block-green" : "block-red" %>"><%= event.description %></blockquote>
           <%= link_to "Edit Event", edit_project_event_path(:id => event.id, :project_id => @project.id) %> <a>|</a>
           <%= link_to "Discuss Event (#{event.comments.count})", project_event_comments_path(:project_id => @project.id, :event_id => event.id) %> <a>|</a>
           <%= link_to "Toggle Complete", project_event_toggle_complete_path(:project_id => @project.id, :event_id => event.id) %>
