@@ -1,6 +1,16 @@
 class DashboardController < ApplicationController
   def index
-    @events = current_person.events.where(deadline: Date.today .. Date.today + 10.years).order("deadline ASC")
+    @events = []
+    
+    current_person.projects.each do |project|
+      project.events.each do |event|
+        if event.deadline > Date.today then
+          @events << event
+        end
+      end
+    end
+    
+    @events.sort_by! { |event| event.deadline }
   end
   
   def people
@@ -11,7 +21,7 @@ class DashboardController < ApplicationController
     person = Person.find(params[:manager_id])
     
     if current_person.manager?
-      person.manager = false;
+      person.manager = false
     end
     
     person.save!
@@ -23,7 +33,7 @@ class DashboardController < ApplicationController
     person = Person.find(params[:manager_id])
     
     if current_person.manager?
-      person.manager = true;
+      person.manager = true
     end
     
     person.save!

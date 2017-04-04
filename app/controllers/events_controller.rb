@@ -21,27 +21,22 @@ class EventsController < ApplicationController
       
       event_params[:recur_times].to_i.times do |i|
         
-        if recur_often.eql? "daily" then
-          event = @project.events.new(event_params)
-          event.deadline = event_base_date + (i + 1).days
-          event.person = current_person
-          event.save!
-        elsif recur_often.eql? "weekly" then
-          event = @project.events.new(event_params)
-          event.deadline = event_base_date + (i + 1).weeks
-          event.person = current_person
-          event.save!
-        elsif recur_often.eql? "monthly" then
-          event = @project.events.new(event_params)
-          event.deadline = event_base_date + (i + 1).months
-          event.person = current_person
-          event.save!
-        elsif recur_often.eql? "yearly" then
-          event = @project.events.new(event_params)
-          event.deadline = event_base_date + (i + 1).years
-          event.person = current_person
-          event.save!
+        event = @project.events.new(event_params)
+        
+        case recur_often
+          when "daily"
+            event.deadline = event_base_date + (i + 1).days
+          when "weekly"
+            event.deadline = event_base_date + (i + 1).weeks
+          when "monthly"
+            event.deadline = event_base_date + (i + 1).months
+          when "yearly"
+            event.deadline = event_base_date + (i + 1).years
         end
+        
+        event.person = current_person
+        event.save!
+        
       end
     end
     
