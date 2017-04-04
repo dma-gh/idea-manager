@@ -11,7 +11,7 @@
           <% if current_person.manager? %>
             <div class="card-action">
               <%= link_to("Make Manager", make_manager_path(:manager_id => person.id)) if !person.manager %>
-              <%= link_to("You are a Manager", '#') if person.id == current_person.id %>
+              <%= link_to("Current Manager", '#') if person.id == current_person.id %>
               <%= link_to("Demote Manager", demote_manager_path(:manager_id => person.id)) if person.manager and person.id != current_person.id %>
             </div>
           <% end %>
