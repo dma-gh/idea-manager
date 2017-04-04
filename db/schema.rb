@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170325222502) do
+ActiveRecord::Schema.define(version: 20170404223559) do
 
   create_table "comments", force: :cascade do |t|
     t.text     "content"
@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 20170325222502) do
     t.integer  "project_id"
     t.integer  "person_id"
     t.boolean  "complete",    default: false
-    t.datetime "deadline",    default: '2017-03-23 00:00:00'
+    t.datetime "deadline",    default: '2017-04-04 00:00:00'
     t.boolean  "recur"
     t.string   "recur_often"
     t.integer  "recur_times"
@@ -70,8 +70,10 @@ ActiveRecord::Schema.define(version: 20170325222502) do
   create_table "projects", force: :cascade do |t|
     t.string   "title"
     t.string   "description"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.integer  "creator_id"
+    t.boolean  "archived",    default: false
   end
 
 end

@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     root to: redirect('/dashboard')
     get '/dashboard' => 'dashboard#index'
     get '/people' => 'dashboard#people', as: 'dashboard_people'
+    get 'dashboard_archived_projects' => 'dashboard#archived', as: 'dashboard_archived_projects'
     get 'make_manager' => 'dashboard#make_manager', as: 'make_manager'
     get 'demote_manager' => 'dashboard#demote_manager', as: 'demote_manager'
     

@@ -12,6 +12,14 @@ class DashboardController < ApplicationController
     
     @events.sort_by! { |event| event.deadline }
   end
+    
+  def archived
+    if current_person.manager?
+      @projects = Project.all.where(archived: true)
+    else
+      @projects = current_user.projects.all.where(archived: true)
+    end
+  end
   
   def people
     @people = Person.all
