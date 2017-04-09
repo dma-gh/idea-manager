@@ -4,7 +4,8 @@ class DashboardController < ApplicationController
     
     current_person.projects.each do |project|
       project.events.each do |event|
-        if event.deadline > Date.today then
+        #The Event Must be in the Future and not Archived
+        if event.deadline > Date.today and !project.archived then
           @events << event
         end
       end
@@ -17,7 +18,7 @@ class DashboardController < ApplicationController
     if current_person.manager?
       @projects = Project.all.where(archived: true)
     else
-      @projects = current_user.projects.all.where(archived: true)
+      @projects = current_person.projects.all.where(archived: true)
     end
   end
   

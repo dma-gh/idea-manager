@@ -1,4 +1,5 @@
 class ProjectsController < ApplicationController
+  include ProjectsHelper
   
   def index
     if current_person.manager?
@@ -57,9 +58,15 @@ class ProjectsController < ApplicationController
     project = Project.new(title: project_params[:title], description: project_params[:description])
     project.events = @project.events
     
-    people_list = project_params[:people]&.uniq
-    
-    people_list&.each do |person_id|
+    if compare_id_obj_array(project_params[:people], @project.people) then
+      #the user is on mobile, or didn't change anything, so both lists are okay
+      people_list = project_params[:people_mbl]
+    else
+      #the user is on desktop
+      people_list = project_params[:people]
+    end
+      
+    people_list&.uniq.each do |person_id|
       project.people << Person.find(person_id)
     end
     
@@ -83,6 +90,6 @@ class ProjectsController < ApplicationController
   
   private
     def project_params
-      params.require(:project).permit(:title, :archived, :creator_id, :description, :people => [])
+      params.require(:project).permit(:title, :archived, :creator_id, :description, :people => [], :people_mbl => [])
     end
 end

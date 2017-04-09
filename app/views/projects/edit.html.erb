@@ -13,9 +13,9 @@
   <hr>
 
   <!-- Stylized select multiple doesn't work on mobile. So hide the fancy one on phones, and show the browser default instead. -->
-  <label for="project[people][]">Select Team Members</label>
+  <label for="project[people_mbl][]">Select Team Members</label>
   <div class="form-group input-field hide-on-large-only">    
-    <select class="browser-default" multiple="multiple" name="project[people][]">
+    <select class="browser-default" multiple="multiple" name="project[people_mbl][]">
       <option value="" disabled selected>Choose People to Include</option>
       <% @people.each do |person| %>
         <%= content_tag :option, "#{person.first_name} #{person.last_name}", id: person.id, value: "#{person.id}", selected: (@project.people.include?(person) ? "true" : false) %>
