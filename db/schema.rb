@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 20170404223559) do
     t.integer  "project_id"
     t.integer  "person_id"
     t.boolean  "complete",    default: false
-    t.datetime "deadline",    default: '2017-04-04 00:00:00'
+    t.datetime "deadline",    default: '2017-04-15 00:00:00'
     t.boolean  "recur"
     t.string   "recur_often"
     t.integer  "recur_times"

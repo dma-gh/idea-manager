@@ -1,0 +1,13 @@
+%h3
+  %center Active Projects
+%br/
+.row-fluid.projects
+  - @projects.each do |project|
+    .col.col-sm-12.col-md-12.col-lg-12
+      .card.project
+        .card-content.black-text
+          %span.card-title= project.title
+          %p= project.description
+        .card-action
+          = link_to "View Project", project
+= render partial: "floating_add_project_button"

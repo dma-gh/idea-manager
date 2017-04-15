@@ -1,0 +1,50 @@
+:css
+  label {
+    position: relative !important;
+  }
+:javascript
+  $(function() {
+    $('.recur_options').hide();
+    
+    $('#event_recur').change(function() {
+      if (this.checked)
+        $('.recur_options').fadeIn('slow');
+      else
+        $('.recur_options').fadeOut('slow');
+    });
+  });
+= form_for [@project, @event], url: project_events_path(@project) do |f|
+  .form-group.input-field
+    = f.label :title
+    = f.text_field :title, placeholder: "Event Title", class: "form-control validate"
+  .form-group.input-field
+    = f.label :description
+    = f.text_area :description, placeholder: "Event", class: "form-control materialize-textarea"
+  .form-group.input-field
+    = f.date_field :deadline, class: 'datepicker date'
+  .form-group.input-field.switch
+    = f.label :recur
+    %label
+      = f.check_box :recur, class: "form-control filled-in"
+      %span.lever
+  .recur_options
+    .form-group.input-field
+      %p
+        = f.radio_button :recur_often, "daily", class: "form-control"
+        = f.label :recur_often_daily, "Daily"
+      %p
+        = f.radio_button :recur_often, "weekly", class: "form-control"
+        = f.label :recur_often_weekly, "Weekly"
+      %p
+        = f.radio_button :recur_often, "monthly", class: "form-control"
+        = f.label :recur_often_monthly, "Monthly"
+      %p
+        = f.radio_button :recur_often, "yearly", class: "form-control"
+        = f.label :recur_often_yearly, "Yearly"
+    %br/
+    .form-group.input-field
+      = f.label :recur_times
+      = f.number_field :recur_times, class: "form-control", placeholder: "Enter the Number of Times this Event Should Recur"
+  %br/
+  .form-group
+    = f.submit 'Add Event', class: "btn btn-lg waves-effect waves-light"

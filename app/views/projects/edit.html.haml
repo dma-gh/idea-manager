@@ -1,0 +1,28 @@
+%h3
+  %center Editing Project
+= form_for @project, url: project_path(id: @project.id), method: :patch, :html => { class: "col-lg-10 col-lg-offset-1 col-md-12 col-sm-12 col-xs-12 " } do |f|
+  .form-group.input-field
+    = f.label :title
+    = f.text_field :title, placeholder: "Project Title", class: "form-control validate"
+  .form-group.input-field
+    = f.label :description
+    = f.text_area :description, placeholder: "Project Description", class: "form-control materialize-textarea"
+  %hr/
+  / Stylized select multiple doesn't work on mobile. So hide the fancy one on phones, and show the browser default instead.
+  %label{:for => "project[people_mbl][]"} Select Team Members
+  .form-group.input-field.hide-on-large-only
+    %select.browser-default{:multiple => "multiple", :name => "project[people_mbl][]"}
+      %option{:disabled => "disabled", :selected => "selected", :value => ""} Choose People to Include
+      - @people.each do |person|
+        = content_tag :option, "#{person.first_name} #{person.last_name}", id: person.id, value: "#{person.id}", selected: (@project.people.include?(person) ? "true" : false)
+  .form-group.input-field.hide-on-small-only
+    %select{:multiple => "multiple", :name => "project[people][]"}
+      %option{:disabled => "disabled", :selected => "selected", :value => ""} Choose People to Include
+      - @people.each do |person|
+        = content_tag :option, "#{person.first_name} #{person.last_name}", id: person.id, value: "#{person.id}", selected: (@project.people.include?(person) ? "true" : false)
+  .form-group.input-field
+    = f.check_box :archived
+    = f.label :archived
+  %br/
+  .form-group
+    = f.submit 'Save Project', class: "btn btn-lg waves-effect waves-light"

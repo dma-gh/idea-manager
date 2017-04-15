@@ -1,0 +1,41 @@
+= stylesheet_link_tag 'projects'
+%h5= @project.title
+%p
+  &#124;
+  - @project.people.each do |person|
+    = "#{person.first_name} #{person.last_name} | "
+= link_to "Edit Project Settings", edit_project_path(@project)
+%section#cd-timeline.cd-container
+  - @events.each do |event|
+    .cd-timeline-block
+      %div{:class => "cd-timeline-img #{event.complete? ? "cd-green" : "cd-red"}"}
+      .cd-timeline-content
+        %h5= event.title
+        %blockquote{:class => "#{event.complete? ? "block-green" : "block-red"}"}= event.description
+        = link_to "Edit Event", edit_project_event_path(:id => event.id, :project_id => @project.id)
+        %a &#124;
+        = link_to "Discuss Event (#{event.comments.count})", project_event_comments_path(:project_id => @project.id, :event_id => event.id)
+        %a &#124;
+        = link_to "Toggle Complete", project_event_toggle_complete_path(:project_id => @project.id, :event_id => event.id)
+        %span.cd-date
+          %b
+            = event.deadline.strftime("%B %d, %Y") unless event.deadline.nil? 
+            = "by #{event.person.first_name} #{event.person.last_name}" if event.person.present?
+#eventForm.modal.fade.bootbox{:role => "dialog"}
+  .modal-dialog
+    / Modal content
+    .modal-content
+      .modal-header
+        %button.close{"data-dismiss" => "modal", :type => "button"} ×
+      .modal-body
+        = render partial: 'events/form'
+.fixed-action-btn.horizontal.click-to-toggle
+  %a.btn-floating.btn-large.red
+    %i.material-icons menu
+  %ul
+    %li
+      = link_to :back, class: "btn-floating yellow darken-2" do
+        %i.material-icons keyboard_arrow_left
+    %li
+      = link_to '#', :data => { 'toggle':'modal', 'target':'#eventForm' }, class: "btn-floating red" do
+        %i.material-icons add

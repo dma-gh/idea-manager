@@ -1,0 +1,37 @@
+%h3 Sign up
+= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+  = devise_error_messages!
+  .field
+    = f.label :email
+    %br/
+    = f.email_field :email, placeholder: "Enter your Email Address", autofocus: true
+  .field
+    = f.label :first_name
+    %br/
+    = f.text_field :first_name, placeholder: "Enter your First Name", autofocus: true
+  .field
+    = f.label :last_name
+    %br/
+    = f.text_field :last_name, placeholder: "Enter your Last Name", autofocus: true
+  .field
+    = f.label :phone
+    %br/
+    = f.telephone_field :phone, placeholder: "Enter your Phone Number", autofocus: true
+  .field
+    = f.label :carrier
+    = carrier_select('person[carrier]', "Choose your Carrier")
+  .field
+    = f.label :password
+    - if @minimum_password_length
+      %em
+        (#{@minimum_password_length} characters minimum)
+    %br/
+    = f.password_field :password, placeholder: "Enter your Password", autocomplete: "off"
+  .field
+    = f.label :password_confirmation
+    %br/
+    = f.password_field :password_confirmation, placeholder: "Confirm Your Password", autocomplete: "off"
+  .actions.btn-group
+    = f.submit "Sign up", class: "btn"
+  %br/
+  %br/

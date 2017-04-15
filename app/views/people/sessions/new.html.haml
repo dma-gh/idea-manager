@@ -1,0 +1,16 @@
+%h3 Log In
+= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+  = devise_error_messages!
+  .field
+    = f.label :email
+    %br/
+    = f.email_field :email, placeholder: "Email", autofocus: true
+  .field
+    = f.label :password
+    - if @minimum_password_length
+      %em
+        (#{@minimum_password_length} characters minimum)
+    %br/
+    = f.password_field :password, placeholder: "Password", autocomplete: "off"
+  .actions.btn-group
+    = f.submit "Log in", class: "btn"

@@ -61,7 +61,7 @@ h1, h2 {
 
 /* -------------------------------- 
 
-Modules - reusable parts of our design
+Modules
 
 -------------------------------- */
 
@@ -274,7 +274,7 @@ header {
 	}
 
 	.cd-date {
-		float: left;
+		float: right;
 		padding: .8em 0;
 		opacity: .7;
 	}
@@ -326,28 +326,6 @@ header {
 			left: 122%;
 			top: 6px;
 			@include font-size(16px);
-		}
-
-		.cd-timeline-block:nth-child(even) & {
-			float: right;
-
-			&::before {
-				top: 24px;
-				left: auto;
-				right: 100%;
-				border-color: transparent;
-				border-right-color: $color-3;
-			}
-
-			.cd-read-more {
-				float: right;
-			}
-
-			.cd-date {
-				left: auto;
-				right: 122%;
-				text-align: right;
-			}
 		}
 
 		.cssanimations &.is-hidden {
@@ -723,7 +701,7 @@ header h1 {
     border-left-color: white;
   }
   .cd-timeline-content .cd-read-more {
-    float: left;
+    float: right;
   }
   .cd-timeline-content .cd-date {
     position: absolute;
@@ -733,25 +711,7 @@ header h1 {
     font-size: 16px;
     font-size: 1rem;
   }
-	
-  .cd-timeline-block:nth-child(even) .cd-timeline-content {
-    float: right;
-  }
-  .cd-timeline-block:nth-child(even) .cd-timeline-content::before {
-    top: 24px;
-    left: auto;
-    right: 100%;
-    border-color: transparent;
-    border-right-color: white;
-  }
-  .cd-timeline-block:nth-child(even) .cd-timeline-content .cd-read-more {
-    float: right;
-  }
-  .cd-timeline-block:nth-child(even) .cd-timeline-content .cd-date {
-    left: auto;
-    right: 122%;
-    text-align: right;
-  }
+
   .cssanimations .cd-timeline-content.is-hidden {
     visibility: hidden;
   }
@@ -763,14 +723,6 @@ header h1 {
   }
 }
 
-@media only screen and (min-width: 1170px) {
-  /* inverse bounce effect on even content blocks */
-  .cssanimations .cd-timeline-block:nth-child(even) .cd-timeline-content.bounce-in {
-    -webkit-animation: cd-bounce-2-inverse 0.6s;
-    -moz-animation: cd-bounce-2-inverse 0.6s;
-    animation: cd-bounce-2-inverse 0.6s;
-  }
-}
 @-webkit-keyframes cd-bounce-2 {
   0% {
     opacity: 0;

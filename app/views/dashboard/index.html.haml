@@ -1,0 +1,18 @@
+= stylesheet_link_tag 'projects'
+%h3
+  %center Upcoming Events
+%br/
+%section#cd-timeline.cd-container
+  - @events.each do |event|
+    .cd-timeline-block
+      %div{:class => "cd-timeline-img #{event.complete? ? "cd-green" : "cd-red"}"}
+      .cd-timeline-content
+        %h7= event.project.title
+        %h5= event.title
+        %blockquote{:class => "#{event.complete? ? "block-green" : "block-red"}"}= event.description
+        = link_to "View Project", project_path(event.project)
+        %span.cd-date
+          %b
+             #{event.deadline.strftime("%B %d, %Y") unless event.deadline.nil?} by #{"#{event.person.first_name} #{event.person.last_name}" if event.person.present?}
+= render partial: "floating_add_project_button"
+%br/

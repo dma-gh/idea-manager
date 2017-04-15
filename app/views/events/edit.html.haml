@@ -1,0 +1,13 @@
+%h3
+  %center Editing Event
+= form_for @event, url: project_event_path(:project_id => @project.id, :id => @event.id), method: :patch do |f|
+  .form-group.input-field
+    = f.label :title
+    = f.text_field :title, placeholder: "Event Title", class: "form-control validate"
+  .form-group.input-field
+    = f.label :description
+    = f.text_area :description, placeholder: "Event", class: "form-control materialize-textarea"
+  .form-group.input-field
+    = f.date_field :deadline, class: 'datepicker date'
+  .form-group
+    = f.submit 'Update Event', class: "btn btn-lg waves-effect waves-light"

@@ -1,0 +1,54 @@
+!!!
+%html.flexbox
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title IdeaManager
+    = csrf_meta_tags
+    %meta{:charset => "utf-8"}/
+    %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
+    = javascript_include_tag 'application'
+    = javascript_include_tag "https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"
+    = stylesheet_link_tag "https://fonts.googleapis.com/icon?family=Material+Icons"
+    = stylesheet_link_tag "https://fonts.googleapis.com/css?family=Droid+Serif|Open+Sans"
+    = stylesheet_link_tag 'application', media: 'all'
+  %body
+    :javascript
+      $(function() {
+        $('.button-collapse').sideNav();
+      });
+    %ul#slide-out.side-nav.fixed
+      %li.logo
+        %center
+          %span#logo-container.brand-logo{:href => "/"}
+            %span.glyphicon.glyphicon-tower
+      %li= link_to "Dashboard", dashboard_path, class: "nav-item"
+      %li= link_to "Projects", projects_path, class: "nav-item"
+      %li= link_to "Archived", dashboard_archived_projects_path, class: "nav-item"
+      %li= link_to "People", dashboard_people_path, class: "nav-item"
+      - if current_person.blank?
+        %li
+          = link_to new_person_registration_path do
+            %span.glyphicon.glyphicon-user>
+              Sign Up
+        %li
+          = link_to new_person_session_path do
+            %span.glyphicon.glyphicon-log-in>
+               Login
+      - else
+        %li
+          %a
+            Welcome #{current_person.first_name}
+        %li= link_to "Log Out", destroy_session_path(current_person), method: :delete
+    %nav.navbar.navbar-default.hide-on-large-only
+      .container
+        .navbar-header
+          %button.navbar-toggle.button-collapse{"data-activates" => "slide-out", :href => "#", :type => "button"}
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+          %ul.nav.navbar-nav
+            %li
+              %a.navbar-brand{:href => "/"} Idea
+    .container
+      %main
+        = yield
