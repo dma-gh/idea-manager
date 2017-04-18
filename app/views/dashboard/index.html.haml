@@ -11,8 +11,17 @@
         %h5= event.title
         %blockquote{:class => "#{event.complete? ? "block-green" : "block-red"}"}= event.description
         = link_to "View Project", project_path(event.project)
+        %a &#124;
+        = link_to "Discuss Event", project_event_comments_path(project_id: event.project.id, event_id: event.id)
         %span.cd-date
           %b
              #{event.deadline.strftime("%B %d, %Y") unless event.deadline.nil?} by #{"#{event.person.first_name} #{event.person.last_name}" if event.person.present?}
+        = '<hr>'.html_safe unless event.comments.empty?
+        - event.comments.last(2).each do |comment|
+          .comment
+            %h6
+              = "#{comment.person.first_name} #{comment.person.last_name}" if comment.person.present?
+              on #{comment.created_at.localtime.strftime("%B %d, %Y")}
+              %blockquote= comment.content
 = render partial: "floating_add_project_button"
-%br/
+%br

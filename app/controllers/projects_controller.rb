@@ -7,6 +7,20 @@ class ProjectsController < ApplicationController
     else
       @projects = current_person.projects.where(archived: false).order "updated_at DESC"
     end
+
+    @comments = {}
+
+    @projects.each do |project|
+      latest_comment = Comment.new(created_at: Date.today - 50.years)
+      project.events.each do |event|
+        event.comments.each do |comment|
+          if comment.created_at > latest_comment.created_at then 
+            latest_comment = comment 
+          end
+        end
+        @comments[project.id] = latest_comment
+      end
+    end
   end
   
   def new

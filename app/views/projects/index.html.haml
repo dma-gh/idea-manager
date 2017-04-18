@@ -1,3 +1,8 @@
+:css
+  blockquote {
+    margin-bottom: -10px;
+  }
+
 %h3
   %center Active Projects
 %br/
@@ -8,6 +13,11 @@
         .card-content.black-text
           %span.card-title= project.title
           %p= project.description
+          - if @comments[project.id].present?
+            %hr
+            %h6
+              Latest Comment:
+              %blockquote= @comments[project.id].content 
         .card-action
           = link_to "View Project", project
 = render partial: "floating_add_project_button"

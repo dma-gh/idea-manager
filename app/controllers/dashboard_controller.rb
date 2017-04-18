@@ -4,8 +4,8 @@ class DashboardController < ApplicationController
     
     current_person.projects.each do |project|
       project.events.each do |event|
-        #The Event Must be in the Future and not Archived
-        if event.deadline > Date.today and !project.archived then
+        #The Event must be less than 5 days expired or in the future and not Archived
+        if event.deadline >= (Date.today - 5.days) and !project.archived then
           @events << event
         end
       end
