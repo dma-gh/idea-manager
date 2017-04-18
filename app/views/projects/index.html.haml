@@ -15,8 +15,10 @@
           %p= project.description
           - if @comments[project.id].present?
             %hr
+            %h6 Latest Comment:
             %h6
-              Latest Comment:
+              = "#{@comments[project.id].person.first_name} #{@comments[project.id].person.last_name}" if @comments[project.id].person.present?
+              on #{@comments[project.id].created_at.localtime.strftime("%B %d, %Y")}
               %blockquote= @comments[project.id].content 
         .card-action
           = link_to "View Project", project
