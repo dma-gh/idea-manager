@@ -13,7 +13,7 @@
         .card-content.black-text
           %span.card-title= project.title
           %p= project.description
-          - if @comments[project.id].present?
+          - if !@comments[project.id].content.nil?
             %hr
             %h6 Latest Comment:
             %h6
