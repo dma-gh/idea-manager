@@ -19,4 +19,5 @@ Rails.application.routes.draw do
   root to: redirect('/people/sign_in')
   
   devise_for :people, :controllers => { :registrations => "registrations" }
+  get '*path' => redirect('/')
 end
