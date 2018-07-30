@@ -38,6 +38,14 @@ class DashboardController < ApplicationController
     @person = Person.find(params[:id])
   end
 
+  def organization
+    @data = []
+
+    Person.all.each do |person|
+      @data << [person.competence, person.communication, person.first_name] unless person.manager?
+    end
+  end
+
   def message
     @project = Project.find(params[:project_id])
     sms = SMSEasy::Client.new

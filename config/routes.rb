@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     get 'demote_manager' => 'dashboard#demote_manager', as: 'demote_manager'
     get 'message' => 'project#message'
     post '/projects/message' => 'dashboard#message'
+    get '/organization' => 'dashboard#organization', as: 'organization_graph'
     
     resources :projects do
       resources :events do

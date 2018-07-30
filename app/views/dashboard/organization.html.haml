@@ -1,0 +1,5 @@
+%h2 Total Org
+
+%br/
+
+= scatter_chart(@data, xtitle: "Competency", ytitle: "Communication", library: { yAxis: { min: 0, max: 5, tickInterval: 1, labels: { style: { fontSize: '19px' } } }, xAxis: { min: 0, max: 5, tickInterval: 1, labels: { style: { fontSize: '19px' } } } }, width: '500px', height: '500px')

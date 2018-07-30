@@ -1,5 +1,6 @@
 %h3
   %center People
+= link_to "Total Org", organization_graph_path if current_person.manager?
 %br/
 .row-fluid.projects
   - @people.each do |person|

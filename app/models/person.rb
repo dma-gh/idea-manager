@@ -8,8 +8,8 @@ class Person < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   def competence
-  	base = (hanging_skill + packing_skill + painting_skill).to_f / 3
-  	upper = base + (renu_skill * 2 + tech_skill + batch_skill + harley_skill + forklift_skill + welding_skill + maintenance_skill + wash_skill).to_f / 3
+  	base = (hanging_skill.to_i + packing_skill.to_i + painting_skill.to_i).to_f / 3
+  	upper = base + (renu_skill.to_i * 2 + tech_skill.to_i + batch_skill.to_i + harley_skill.to_i + forklift_skill.to_i + welding_skill.to_i + maintenance_skill.to_i + wash_skill.to_i).to_f / 3
 
   	if upper <= 5
   		return upper

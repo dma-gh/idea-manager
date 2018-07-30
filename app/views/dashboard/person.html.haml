@@ -1,8 +1,18 @@
 :css
 	.range-field { width: 50% !important; }
 	.input-field { float: left; margin-right: 30px; }
+	text.highcharts-axis-title { font-size: 19px; }
 
 %h2= "#{@person.first_name} #{@person.last_name}"
+
+%br/
+
+= scatter_chart([[@person.competence,@person.communication]], xtitle: "Competency", ytitle: "Communication", library: { plotOptions: { series: { marker: { enabled: true, symbol: 'triangle', radius: 15 } } }, yAxis: { min: 0, max: 5, tickInterval: 1, labels: { style: { fontSize: '19px' } } }, xAxis: { min: 0, max: 5, tickInterval: 1, labels: { style: { fontSize: '19px' } } } }, width: '500px', height: '500px')
+
+%br/
+
+%hr
+
 - if current_person.manager?
 	= form_for @person, url: "/person/#{@person.id}" do |f|
 		.form-group.input-field
@@ -47,5 +57,6 @@
 				= f.label :welding_skill
 
 		= f.submit "Update Person", class: "btn btn-small"
-%br/
-= scatter_chart([[@person.competence,@person.communication]], xtitle: "Competency", ytitle: "Communication", library: { plotOptions: { series: { marker: { enabled: true, symbol: 'triangle', radius: 15 } } }, yAxis: { min: 0, max: 5, tickInterval: 1 }, xAxis: { min: 0, max: 5, tickInterval: 1 } }, width: '400px', height: '400px')
+		%br/
+		%br/
+
