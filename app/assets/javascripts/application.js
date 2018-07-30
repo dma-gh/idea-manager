@@ -14,4 +14,6 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require materialize
+//= require highcharts
+//= require chartkick
 //= require_tree .

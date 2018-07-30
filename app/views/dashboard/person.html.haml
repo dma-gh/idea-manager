@@ -1,0 +1,51 @@
+:css
+	.range-field { width: 50% !important; }
+	.input-field { float: left; margin-right: 30px; }
+
+%h2= "#{@person.first_name} #{@person.last_name}"
+- if current_person.manager?
+	= form_for @person, url: "/person/#{@person.id}" do |f|
+		.form-group.input-field
+			%p.range-field
+				Hanging Rating
+				= f.range_field :hanging_skill, max: 4, min: 0
+			.form-group
+			%p.range-field
+				Painting Rating
+				= f.range_field :painting_skill, max: 4, min: 0
+			.form-group
+			%p.range-field
+				Packing Rating
+				= f.range_field :packing_skill, max: 4, min: 0
+			.form-group
+			%p.range-field
+				Communication Rating
+				= f.range_field :communication, max: 5, min: 0
+			.form-group.input-field
+				= f.check_box :tech_skill, class: "form-control"
+				= f.label :tech_skill, "TRAX/DMS Trained"
+			.form-group.input-field
+				= f.check_box :wash_skill, class: "form-control"
+				= f.label :wash_skill
+			.form-group.input-field
+				= f.check_box :renu_skill, class: "form-control"
+				= f.label :renu_skill
+			.form-group.input-field
+				= f.check_box :maintenance_skill, class: "form-control"
+				= f.label :maintenance_skill
+			.form-group.input-field
+				= f.check_box :batch_skill, class: "form-control"
+				= f.label :batch_skill
+			.form-group.input-field
+				= f.check_box :harley_skill, class: "form-control"
+				= f.label :harley_skill
+			.form-group.input-field
+				= f.check_box :forklift_skill, class: "form-control"
+				= f.label :forklift_skill
+			.form-group.input-field
+				= f.check_box :welding_skill, class: "form-control"
+				= f.label :welding_skill
+
+		= f.submit "Update Person", class: "btn btn-small"
+%br/
+= scatter_chart([[@person.competence,@person.communication]], xtitle: "Competency", ytitle: "Communication", library: { plotOptions: { series: { marker: { enabled: true, symbol: 'triangle', radius: 15 } } }, yAxis: { min: 0, max: 5, tickInterval: 1 }, xAxis: { min: 0, max: 5, tickInterval: 1 } }, width: '400px', height: '400px')

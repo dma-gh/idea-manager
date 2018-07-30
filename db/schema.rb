@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170404223559) do
+ActiveRecord::Schema.define(version: 20180730211607) do
 
   create_table "comments", force: :cascade do |t|
     t.text     "content"
@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 20170404223559) do
     t.integer  "project_id"
     t.integer  "person_id"
     t.boolean  "complete",    default: false
-    t.datetime "deadline",    default: '2017-04-15 00:00:00'
+    t.datetime "deadline",    default: '2017-03-30 00:00:00'
     t.boolean  "recur"
     t.string   "recur_often"
     t.integer  "recur_times"
@@ -56,6 +56,19 @@ ActiveRecord::Schema.define(version: 20170404223559) do
     t.string   "last_name"
     t.string   "phone"
     t.string   "carrier"
+    t.integer  "painting_skill"
+    t.integer  "hanging_skill"
+    t.integer  "packing_skill"
+    t.integer  "tech_skill"
+    t.integer  "renu_skill"
+    t.integer  "batch_skill"
+    t.integer  "harley_skill"
+    t.integer  "forklift_skill"
+    t.integer  "welding_skill"
+    t.integer  "maintenance_skill"
+    t.integer  "wash_skill"
+    t.integer  "year_started"
+    t.integer  "communication"
     t.index ["email"], name: "index_people_on_email", unique: true
     t.index ["reset_password_token"], name: "index_people_on_reset_password_token", unique: true
   end

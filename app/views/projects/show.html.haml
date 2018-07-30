@@ -36,6 +36,14 @@
         %button.close{"data-dismiss" => "modal", :type => "button"} ×
       .modal-body
         = render partial: 'events/form'
+#messageForm.modal.fade.bootbox{:role => "dialog"}
+  .modal-dialog
+    / Modal content
+    .modal-content
+      .modal-header
+        %button.close{"data-dismiss" => "modal", :type => "button"} ×
+      .modal-body
+        = render partial: 'projects/message'
 .fixed-action-btn.horizontal.click-to-toggle
   %a.btn-floating.btn-large.red
     %i.material-icons menu
@@ -43,6 +51,9 @@
     %li
       = link_to :back, class: "btn-floating yellow darken-2" do
         %i.material-icons keyboard_arrow_left
+    %li
+      = link_to '#', :data => { 'toggle':'modal', 'target':'#messageForm' }, class: "btn-floating red" do
+        %i.material-icons message
     %li
       = link_to '#', :data => { 'toggle':'modal', 'target':'#eventForm' }, class: "btn-floating red" do
         %i.material-icons add

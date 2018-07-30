@@ -1,0 +1,32 @@
+:css
+  blockquote {
+    font-size: 11pt;
+  }
+  
+  .comment {
+    box-shadow: -3px 2px 5px #888888;
+    padding: 12px 0px 5px 12px;
+    margin-top: 8px;
+  }
+%h6= @project.title
+%br/
+= form_tag '/projects/message' do |f|
+  .form-group.input-field.hide-on-large-only
+    %select.browser-default{:multiple => "multiple", :name => "project[people][]"}
+      %option{:disabled => "disabled", :selected => "selected", :value => ""} Choose People to Include
+      - @project.people.each do |person|
+        = content_tag :option, "#{person.first_name} #{person.last_name}", id: person.id, value: "#{person.id}"
+  .form-group.input-field.hide-on-small-only
+    %select{:multiple => "multiple", :name => "project[people][]"}
+      %option{:disabled => "disabled", :selected => "selected", :value => ""} Choose People to Include
+      - @project.people.each do |person|
+        = content_tag :option, "#{person.first_name} #{person.last_name}", id: person.id, value: "#{person.id}"
+  .form-group.input-field
+    = hidden_field_tag 'project_id', @project.id
+    = label_tag :message
+    = text_area_tag 'message', nil, class: "form-control materialize-textarea"
+  %br/
+  .form-group
+    = submit_tag 'Send Message', class: "btn btn-lg waves-effect waves-light"
+
+

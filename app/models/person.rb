@@ -6,4 +6,15 @@ class Person < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
+  def competence
+  	base = (hanging_skill + packing_skill + painting_skill).to_f / 3
+  	upper = base + (renu_skill * 2 + tech_skill + batch_skill + harley_skill + forklift_skill + welding_skill + maintenance_skill + wash_skill).to_f / 3
+
+  	if upper <= 5
+  		return upper
+  	else
+  		return 5
+  	end
+  end
 end
